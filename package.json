@@ -1,0 +1,29 @@
+{
+  "name": "cc_senecahackathon",
+  "version": "1.0.0",
+  "description": "An app that recommends you healthy recepies",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Piyush-Bhor/CC_SenecaHackathon.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Piyush-Bhor/CC_SenecaHackathon/issues"
+  },
+  "homepage": "https://github.com/Piyush-Bhor/CC_SenecaHackathon#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "mongoose": "^7.1.0",
+    "nodemon": "^2.0.22",
+    "path": "^0.12.7",
+    "save-dev": "^0.0.1-security"
+  }
+}
