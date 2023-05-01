@@ -14,11 +14,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({extended:false}));
 
 // database connection
-/*
+
 const url = process.env.CONNECTIONSTRING;
 mongoose.connect(url, {useNewUrlParser:true}) 
 const con = mongoose.connection
-*/
+con.on('open', ()=> {
+    console.log("Database Connnected....");
+});
 
 //routes
 app.get('/',(req, res) => {
