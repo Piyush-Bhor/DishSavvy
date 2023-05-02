@@ -36,6 +36,28 @@ app.use(session({
 
 // routes
 
+/* Dummy API routes */
+
+// home page - random recipes
+app.get('/',(req, res) => {
+    var pageData = {
+        recipe_title : "Ramen Noodle Coleslaw",
+        recipe_image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg"
+    }
+    res.render('home',pageData);
+    
+});
+
+// get recipe detail
+app.get('/detail',(req, res) => {
+    var pageData = {
+        recipe_title : "Ramen Noodle Coleslaw",
+        recipe_image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg"
+    }
+    res.render('recipe_single',pageData);  
+});
+
+/*
 // home page - random recipes
 app.get('/',(req, res) => {
     const recipeAPI = require('./api/recipe_random');
@@ -62,6 +84,12 @@ app.get('/detail',(req, res) => {
         res.render('recipe_single',pageData);
     }
     async_detail();
+});
+*/
+
+// search page
+app.get('/search', (req,res) => {
+    res.render('search');
 });
 
 /* login & sign up */
@@ -167,7 +195,6 @@ app.get('/setup',function(req, res){
     newUser.save();
     res.send('Done');
 });
-
 
 // server start
 app.listen(8080);
