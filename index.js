@@ -34,17 +34,32 @@ app.use(session({
     saveUninitialized: true
 })); 
 
-//routes
+// routes
+
+// home page - random recipes
 app.get('/',(req, res) => {
-    const RecepieAPI = require('./api/recepie_random');
+    const recipeAPI = require('./api/recipe_random');
     const async_random = async () => {
-        const response = await RecepieAPI.get_random_recepie(1,['vegetarian','dessert']);
+        const response = await recipeAPI.get_random_recipe(1,['vegetarian','dessert']);
         var pageData = {
-            recepie : response.data[0].title
+            recipe : response.data.recipes[0].title
         }
         res.render('home',pageData);
     }
     async_random();
+});
+
+// get recipe detail
+app.get('/detail',(req, res) => {
+    const recipeAPI = require('./api/recipe_detail');
+    const async_detail = async () => {
+        const response = await recipeAPI.get_detail(479101);
+        var pageData = {
+            recipe_detail : response.data.recipes[0].title
+        }
+        res.render('recipe_single',pageData);
+    }
+    async_detail();
 });
 
 /* login & sign up */
