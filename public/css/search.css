@@ -1,0 +1,15 @@
+
+/*** SEARCH ***/
+.searchBar{
+    text-align: center;
+}
+
+h1{
+    font-weight: 700;
+    color:#BC4749;
+}
+
+#filter-form{
+    display:none;
+}
+

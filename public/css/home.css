@@ -1,0 +1,50 @@
+/*** HOME PAGE ***/
+#hero-img{
+    width:100%;
+}
+
+#large-text{
+    font-size: 72px;
+    font-weight: 900;
+    width:60%;
+    
+}
+
+.hero{
+    position: relative;
+    text-align: left;
+}
+
+.inner{
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left:7%;
+}
+
+.hero button{
+    background:none;
+    border:2px solid black;
+    transition:0.3s;
+}
+
+.hero button:hover{
+    background-color: black;
+    color:white;
+    cursor:pointer;
+}
+
+.suggested-recipes{
+    margin-top:30px;
+}
+
+.suggested-recipes h3{
+    width:90%;
+    margin:auto;
+}
+
+@media screen and (max-width: 1000px) {
+    #large-text {
+      font-size:48px;
+    }
+}

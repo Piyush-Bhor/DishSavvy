@@ -1,13 +1,17 @@
 <%- include('includes/header') %>
+<link rel="stylesheet" type="text/css" href="/css/signin.css">
+<%- include('includes/nav') %>
 
 <form action="/signup_process">
     <h1> Sign Up </h1>
-    <input type="text" name="firstName" placeholder="First Name">
-    <input type="text" name="lastName" placeholder="Last Name">
-    <input type="email" name="username" placeholder="Email">
-    <input type="password" name="password" placeholder="Password">
-    <input type="password" name="passwordConfirm" placeholder="Confirm Password">
-    <input type="submit" value="Submit">
+      <div class="inputs">
+      <input type="text" name="firstName" placeholder="First Name">
+      <input type="text" name="lastName" placeholder="Last Name">
+      <input type="email" name="username" placeholder="Email">
+      <input type="password" name="password" placeholder="Password">
+      <input type="password" name="passwordConfirm" placeholder="Confirm Password">
+      <input type="submit" value="Submit">
+    </div>
     <!--oauth?-->
 </form>
 <!-- error message -->

@@ -50,7 +50,7 @@ button{
 }
 
 .recipe-info{
-    background-color: rgb(236, 236, 236);
+    background-color: rgb(238, 238, 238);
     border-radius: 0 0 20px 20px;
     padding:20px;
 }
@@ -60,11 +60,11 @@ header{
     padding:1rem;
 }
 
-.head-container{
+.head-container, .header-loggedin{
     display:grid;
     text-align: left;
     align-items: center;
-    grid-template-columns: 0.5fr 3fr 1fr;
+    grid-template-columns: 0.5fr 2fr 1fr;
     gap:20px;
 }
 
@@ -97,73 +97,6 @@ nav button:hover{
     background-color:#386641;
     color:white;
 }
-
-/*** HOME PAGE ***/
-#hero-img{
-    width:100%;
-}
-
-#large-text{
-    font-size: 72px;
-    font-weight: 900;
-    width:60%;
-    
-}
-
-.hero{
-    position: relative;
-    text-align: left;
-}
-
-.inner{
-    position:absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left:7%;
-}
-
-.hero button{
-    background:none;
-    border:2px solid black;
-    transition:0.3s;
-}
-
-.hero button:hover{
-    background-color: black;
-    color:white;
-    cursor:pointer;
-}
-
-.suggested-recipes{
-    margin:auto;
-    margin-top:30px;
-}
-
-.suggested-recipes h3{
-    width:90%;
-}
-
-/*** ACCOUNT PAGE ***/
-.account-container{
-    width:80%;
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap:20px;
-    margin:auto;
-}
-
-.account-container section{
-    border: 1px solid black;
-    border-radius: 20px;
-    padding:1rem;
-}
-
-/*** SEARCH ***/
-.searchBar{
-    text-align: center;
-}
-
-
 /*** FOOTER ***/
 footer{
     margin-top:50px;
@@ -202,9 +135,6 @@ footer a:hover{
 
 /*media queries*/
 @media screen and (max-width: 1000px) {
-    #large-text {
-      font-size:48px;
-    }
     .head-container{
         grid-template-columns: 0.5fr 1fr 1fr;
     }
@@ -217,4 +147,52 @@ footer a:hover{
     .generated{
         grid-template-columns: 1fr;
     }
+}
+
+/*nav logged in*/
+.signin{
+    margin-right:40px;
+}
+
+.signin ul{ 
+    list-style-type: none; 
+    padding: 0;
+    margin: 0;
+}
+
+.signin>ul>li{ /* Only applies these styles to the immediate child <li> in the immediate child <ul> in <nav>. Basically it only affects the <li> in the main menu not the sub menu */
+    display: inline-block; /* to make the links in the main menu site side by side */
+    position: relative; /* to make the parent <li> as the container element of the absolutely positioned <ul> representing the sub menu */
+}
+
+.signin ul li ul { /* applies styles only to the sub menu */
+	width: 150px;
+	position: absolute; /* put the sub menu in a separate layer */
+	z-index: 999; /* make sure the sub menu is not hidden behind other elements */
+	text-align: left;
+	background-color: #386641;
+    box-shadow: 0 0 5px #386641;
+}
+
+.signin ul li ul li a{ /* styles for the <a> in the sub menu */
+    color: white;
+    padding: 10px;
+    display: block; /* to make sure the anchor tags occupy all the space available otherwise the hover colour changes do not have a good user experience. */
+}
+
+.signin ul li ul li:hover a:hover{ /* styles for the <a> in the sub menu on mouse over */
+    color: black;
+    background-color: #F2E8CF
+}
+
+.signin ul li ul { /* applies styles only to the sub menu */
+    display: none; /* hide the sub menu by default */
+}
+
+.signin ul li:hover ul{/* applies styles only to the sub menu whose parent <li> is hovered */
+    display: block; /* show the sub menu when a user brings their mouse over the parent <li> */
+}
+
+.sitelinks a{
+    margin-left:20px;
 }

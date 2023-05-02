@@ -95,6 +95,11 @@ app.get('/detail',(req, res) => {
 });
 */
 
+//account page
+app.get('/account',(req,res) => {
+    res.render('account');
+});
+
 // search page
 app.get('/search', (req,res) => {
     res.render('search');
