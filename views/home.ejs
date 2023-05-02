@@ -4,24 +4,31 @@
     <section class="hero">
         <div class="inner">
             <p id="large-text">Healthy recipes at your fingertips</p>
-            <button>Try Now</button>
+            <a href="/search"><button>Try Now</button></a>
         </div>
         
         <img id="hero-img" src="img/hero.jpg">
     </section>
     <section class="suggested-recipes">
-        <h2>Try these tasty recipes</h2>
+        <h3>Try these tasty recipes</h3>
         <div class="generated">
             <!--generated recipes go here-->
-            <!--Image, title-->
+            
+            <%// pageData.forEach(item => { %>
+                <div class="recipe">
+                    <i class="fa-solid fa-star" onclick=""></i>
+                    <img src="<%= recipe_image %>" alt="food" />
+                    <div class="recipe-info">
+                        <%= recipe_title %>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                            veniam
+                        </p>
+                    </div>
+                </div>
+            <%// }); %>
         </div> 
     </section>
 </main>
-
-<!-- only for testing -->
-<p> 
-    <%= recipe_title %> <br>
-    <img src="<%= recipe_image %>" alt="food" />
-</p>
 
 <%- include('includes/footer') %>

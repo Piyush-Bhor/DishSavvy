@@ -54,7 +54,7 @@ app.get('/detail',(req, res) => {
         recipe_title : "Ramen Noodle Coleslaw",
         recipe_image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg"
     }
-    res.render('recipe_single',pageData);  
+    res.render('recipe_single', pageData );  
 });
 
 /*
@@ -84,6 +84,14 @@ app.get('/detail',(req, res) => {
         res.render('recipe_single',pageData);
     }
     async_detail();
+
+    //get 6 results
+    const async_random = async () => {
+        const response = await recipeAPI.get_random_recipe(6,['vegetarian','dessert']);
+        var pageData = response.data.recipes;
+        res.render('home', { pageData });
+    }
+    async_random();
 });
 */
 
