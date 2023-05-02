@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap');
+*{
+    font-family: 'Poppins', 'Sans Serif';
+}
+
+/*** HEADER ***/
+header{
+    padding:1rem;
+}
+
+.head-container{
+    display:grid;
+    text-align: left;
+    align-items: center;
+    grid-template-columns: 0.5fr 3fr 1fr;
+    gap:20px;
+}
+
+.signin{
+    text-align: right;
+}
+
+.head-container a{
+    margin-right:25px;
+}
+
+/*** HOME PAGE ***/
+#hero-img{
+    width:100%;
+}
+
+#large-text{
+    font-size: 72px;
+    font-weight: 900;
+    width:60%;
+}
+
+.hero{
+    
+    position: relative;
+    text-align: left;
+    
+}
+
+.inner{
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left:20px;
+}
+
+/*** ACCOUNT PAGE ***/
+.account-container{
+    width:80%;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:20px;
+    margin:auto;
+}
+
+.account-container section{
+    border: 1px solid black;
+    border-radius: 20px;
+    padding:1rem;
+}
+
+/*** SEARCH ***/
+.searchBar{
+    text-align: center;
+}
+.results{
+    margin:auto;
+    display:grid;
+    width:90%;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top:50px;
+    justify-content: center;
+}
+
+.recipe{
+    padding:1rem;
+    border-radius: 20px;
+    /*box-shadow: 5px 5px 10px rgb(164, 164, 164);*/
+}
+
+.recipe img{
+    width:100%;
+    border-radius: 20px 20px 0 0;
+}
+
+.recipe-info{
+    background-color: rgb(236, 236, 236);
+    border-radius: 0 0 20px 20px;
+    padding:20px;
+}
+
