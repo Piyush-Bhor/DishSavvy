@@ -1,19 +1,26 @@
 <%- include('includes/header') %>
+<link rel="stylesheet" type="text/css" href="/css/search.css">
+<%- include('includes/nav') %>
 <main>
     <section class="searchBar">
         <h1>Search Recipes</h1>
         <p>Search to your heart's content!</p>
         <form action="">
+            <button type="button" class="filter" onclick="toggleFilter()"><i class="fa-solid fa-filter"></i> Filter</button>
+            <div id="filter-form">
+                <input type="checkbox"> Low Sugar
+                <input type="checkbox"> Vegan
+            </div>
             <input type="text" placeholder="Search...">
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
     </section>
-    <p>RESULTS</p>
-    <section class="results">
-        
+    
+    <section class="generated">
         <!--generated results go here-->
         <!--for each result, get the image, title, card should look like this-->
         <div class="recipe">
+            <i class="fa-solid fa-star" onclick=""></i>
             <img src="img/hero.jpg">
             <div class="recipe-info">
                 <h2>Yummy Recipe</h2>
@@ -24,6 +31,7 @@
             </div>
         </div>
         <div class="recipe">
+            <i class="fa-solid fa-star" onclick=""></i>
             <img src="img/hero.jpg">
             <div class="recipe-info">
                 <h2>Yummy Recipe</h2>
@@ -34,6 +42,7 @@
             </div>
         </div>
         <div class="recipe">
+            <i class="fa-solid fa-star" onclick=""></i>
             <img src="img/hero.jpg">
             <div class="recipe-info">
                 <h2>Yummy Recipe</h2>
