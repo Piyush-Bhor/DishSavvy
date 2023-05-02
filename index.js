@@ -23,8 +23,9 @@ con.on('open', ()=> {
 
 // user model
 const User = mongoose.model('User',{
-    username: String,
-    password: String
+    username : String,
+    password : String,
+    favorites: [Number]
 });
 
 // session
@@ -87,6 +88,27 @@ app.get('/detail',(req, res) => {
 });
 */
 
+// add to favorite 
+app.get('/add',(req,res) => {
+    if(req.session.loggedIn) {
+        var username = req.session.username;
+        var recipe_id = req.query.recipe_id;
+
+        User.findOne({username: username}).then((user) => {
+            if(user){ 
+                user.favorites.push(recipe_id);
+                user.save();
+                res.send("Added!"); // only for testing
+            }
+        }).catch((err) => {
+            res.send(err);
+        });
+    }
+    else {
+        res.redirect('/login');
+    }
+});
+
 // search page
 app.get('/search', (req,res) => {
     res.render('search');
@@ -146,7 +168,8 @@ app.get('/signup_process', (req,res) => {
         else {
             var userData = {
                 username: username,
-                password: password
+                password: password,
+                favorites : []
             }
             var newUser = new User(userData);
             newUser.save();
