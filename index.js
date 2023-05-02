@@ -36,7 +36,15 @@ app.use(session({
 
 //routes
 app.get('/',(req, res) => {
-    res.render('home');
+    const RecepieAPI = require('./api/recepie_random');
+    const async_random = async () => {
+        const response = await RecepieAPI.get_random_recepie(1,['vegetarian','dessert']);
+        var pageData = {
+            recepie : response.data[0].title
+        }
+        res.render('home',pageData);
+    }
+    async_random();
 });
 
 /* login & sign up */
