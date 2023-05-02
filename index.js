@@ -42,7 +42,8 @@ app.get('/',(req, res) => {
     const async_random = async () => {
         const response = await recipeAPI.get_random_recipe(1,['vegetarian','dessert']);
         var pageData = {
-            recipe : response.data.recipes[0].title
+            recipe_title : response.data.recipes[0].title,
+            recipe_image : response.data.recipes[0].image,
         }
         res.render('home',pageData);
     }
@@ -55,7 +56,8 @@ app.get('/detail',(req, res) => {
     const async_detail = async () => {
         const response = await recipeAPI.get_detail(479101);
         var pageData = {
-            recipe_detail : response.data.recipes[0].title
+            recipe_title : response.data.recipes[0].title,
+            recipe_image : response.data.recipes[0].image,
         }
         res.render('recipe_single',pageData);
     }
