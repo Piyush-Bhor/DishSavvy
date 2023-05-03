@@ -44,7 +44,8 @@ app.use(session({
 app.get('/',(req, res) => {
     var pageData = {
         recipe_title : "Ramen Noodle Coleslaw",
-        recipe_image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg"
+        recipe_image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+        recipe_id : 12345
     }
     res.render('home',pageData);
     
@@ -55,6 +56,7 @@ app.get('/detail',(req, res) => {
     var pageData = {
         recipe_title : "Ramen Noodle Coleslaw",
         recipe_image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+        recipe_id : 12345
     }
     res.render('recipe_single', pageData );  
 });
@@ -68,6 +70,7 @@ app.get('/',(req, res) => {
         var pageData = {
             recipe_title : response.data.recipes[0].title,
             recipe_image : response.data.recipes[0].image,
+            recipe_id : response.data.recipes[0].id
         }
         res.render('home',pageData);
     }
@@ -90,6 +93,7 @@ app.get('/detail',(req, res) => {
         var pageData = {
             recipe_title : response.data.recipes[0].title,
             recipe_image : response.data.recipes[0].image,
+            recipe_id : response.data.recipes[0].id
         }
         res.render('recipe_single',pageData);
     }
@@ -107,22 +111,26 @@ adds a comma they separate eleements */
         var pageData = {
             recipe_title : response.data.recipes[0].title,
             recipe_image : response.data.recipes[0].image,
+            recipe_id : response.data.recipes[0].id
         }
         res.render('recipe_single',pageData);
     }
 });*/
 
 // add to favorite 
-app.get('/add',(req,res) => {
+app.get('/add/:id',(req,res) => {
     if(req.session.loggedIn) {
         var username = req.session.username;
-        var recipe_id = req.query.recipe_id;
+        /*var recipe_id = req.query.recipe_id;*/
+        var recipe_id = req.params.id;
 
         User.findOne({username: username}).then((user) => {
             if(user){ 
                 user.favorites.push(recipe_id);
                 user.save();
-                res.send("Added!"); // only for testing
+                /*res.send("Added!");*/ // only for testing
+                console.log("added");
+                res.redirect('back');
             }
         }).catch((err) => {
             res.send(err);
@@ -180,6 +188,7 @@ app.get('/favourites', async (req,res) => {
         userInfo : username,
         recipe_title : "Ramen Noodle Coleslaw",
         recipe_image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+        recipe_id : 12345
     }
     res.render('favourites', pageData);
 });

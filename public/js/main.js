@@ -16,8 +16,8 @@ function togglePassword(){
     }
 }
 
-function toggleFavourites(){
-    let star = document.getElementById("thing");
+function toggleFavourites(id){
+    let star = document.getElementById(id);
     if(star.style.color=="black"){
         star.style.color="gold";
     }

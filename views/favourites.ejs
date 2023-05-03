@@ -57,8 +57,9 @@
             <!--grid of favourite recipes here-->
             <!--use IDs in DB in the api request -->
             <div class="recipe">
-                <!--onclick="toggleFavourites(pageData.id)""-->
-                <i class="fa-solid fa-star" id="thing" onclick="toggleFavourites()"></i>
+                <a href="/add/<%=recipe_id%>">
+                    <i class="fa-solid fa-star" id="<%=recipe_id%>" onclick="toggleFavourites(recipe_id)"></i>
+                </a>
                 <img src="<%= recipe_image %>" alt="food" />
                 <div class="recipe-info">
                     <h4><%= recipe_title %></h4>
