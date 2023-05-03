@@ -150,7 +150,7 @@ app.get('/update/:id', (req,res) => {
                 user.username = new_username;
                 user.password = new_password;
                 user.save();
-                
+
                 var pageData = {
                     update_msg : "Details Updated!",
                     userInfo : user
@@ -188,6 +188,20 @@ app.get('/favourites', async (req,res) => {
 app.get('/search', (req,res) => {
     res.render('search');
 });
+
+// search results
+app.get('/search_result',(req,res) => {
+    const recipeAPI = require('./api/search_nutrients');
+    const async_random = async () => {
+        const response = await recipeAPI.search_recipe('pasta',1,50,50,50);
+        var pageData = {
+            recipe_title : response.data.results[0].title,
+            recipe_image : response.data.results[0].image,
+        }
+        res.render('search',pageData);
+    }
+    async_random();
+})
 
 /* login & sign up */
 app.get('/signup',(req,res) => {

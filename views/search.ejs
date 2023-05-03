@@ -5,7 +5,7 @@
     <section class="searchBar">
         <h1>Search Recipes</h1>
         <p>Search to your heart's content!</p>
-        <form action="">
+        <form action="/search_result">
             <button type="button" class="filter" onclick="toggleFilter()"><i class="fa-solid fa-filter"></i> Filter</button>
             <input type="text" placeholder="Search...">
             <button type="submit"><i class="fa fa-search"></i></button>
@@ -22,6 +22,20 @@
         <!--for each result, get the image, title, card should look like this-->
         <div class="recipe">
             <i class="fa-solid fa-star" onclick=""></i>
+            <%
+            if(typeof(recipe_title) != 'undefined'){
+            %>
+            <img src="<%= recipe_image %>">
+            <div class="recipe-info">
+                <h2><%= recipe_title %></h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                    veniam
+                </p>
+            </div>
+            <%
+            } else {
+            %>
             <img src="img/hero.jpg">
             <div class="recipe-info">
                 <h2>Yummy Recipe</h2>
@@ -30,6 +44,10 @@
                     veniam
                 </p>
             </div>
+            <% 
+            }
+            %>
+
         </div>
         <div class="recipe">
             <i class="fa-solid fa-star" onclick=""></i>
