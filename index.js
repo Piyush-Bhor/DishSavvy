@@ -140,7 +140,7 @@ app.get('/user-info', async (req,res) => {
     res.render('user_info', {userInfo})
 });
 
-//user info page
+//user info page -need to fix
 app.post('/user-info/:id', async (req,res) => {
     req.session.loggedIn = true;
     let username = req.body.usernames;
@@ -251,11 +251,11 @@ app.get('/signup_process', (req,res) => {
 });
 
 /* delete account */
-app.get('/delete_account/:id',(req,res) => {
+app.get('/delete_account/:id',(req,res) => {  
     if(req.session.loggedIn) {
         var username = req.session.username;
-        User.findOneAndDelete({username:username}).exec(function(err, user){
-            if(user){
+        User.findOneAndDelete({username: username}).then((user) => {
+            if(user){ 
                 //clear session cookies
                 req.session.username = ''; 
                 req.session.loggedIn = false;
@@ -265,6 +265,8 @@ app.get('/delete_account/:id',(req,res) => {
                 }
                 res.render('login_form', pageData);
             }
+        }).catch((err) => {
+            res.send(err);
         });
     }
     else {
