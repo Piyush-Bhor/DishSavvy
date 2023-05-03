@@ -1,5 +1,8 @@
-
 /*** SEARCH ***/
+main{
+    padding-bottom:280px;
+}
+
 .searchBar{
     text-align: center;
 }
@@ -16,6 +19,3 @@ h1{
 form{
     width:100%;
 }
-
-
-

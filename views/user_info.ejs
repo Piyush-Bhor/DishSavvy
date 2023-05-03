@@ -62,10 +62,9 @@
             <div>
                 <input type="checkbox" onclick="togglePassword()">Show Password 
             </div>
-            
-
             <button type="submit">Submit</button>
         </form>
+        <a href="/delete/<%= userInfo.id %>"><button class="delete">Delete Account</button></a>
         <%}else{%>
             <p class="expired">Your session expired. Please log in again.</p>
         <%}%>

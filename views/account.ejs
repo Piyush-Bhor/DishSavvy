@@ -1,6 +1,7 @@
 <%- include('includes/header') %>
 <link rel="stylesheet" type="text/css" href="/css/account.css">
 <%if(userInfo){%>
+<header>
 <div class="header-loggedin">
     <img id="logo" src="/img/placeholder.png">
     <nav class="sitelinks">
@@ -21,24 +22,31 @@
     </nav>
 </div>
 <%}else{%>
-<%- include('includes/nav')%>
+    <%- include('includes/nav')%>
 <%}%>
+</header>
+
 <main>
     <h2>My Account</h2>
     <div class="account-container">
-        <section>
-            <article>
-                <a href="/user-info"><h4 class="font-weight-bold">My Information</h4></a>
-                <p>View, Edit Information</p>
-            </article>
-            
-        </section>
-        <section>
-            <article>
-                <a href=""><h4 class="font-weight-bold">Favourite Recipes</h4></a>
-                <p>View, edit your favourite recipes</p>
-            </article>
-        </section>
+        <a href="/user-info">
+            <section>
+                <i class="fa-solid fa-user"></i>
+                <article>
+                    <h4 class="font-weight-bold">My Information</h4>
+                    <p>View, Edit Information</p>
+                </article>
+            </section>
+        </a>
+        <a href="/favourites">
+            <section>
+                <i class="fa-solid fa-star"></i>
+                <article>
+                    <h4 class="font-weight-bold">Favourite Recipes</h4>
+                    <p>View, edit your favourite recipes</p>
+                </article>
+            </section>
+        </a>
     </div>
     <!-- login message -->
 <%

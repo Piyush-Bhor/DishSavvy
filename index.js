@@ -54,7 +54,7 @@ app.get('/',(req, res) => {
 app.get('/detail',(req, res) => {
     var pageData = {
         recipe_title : "Ramen Noodle Coleslaw",
-        recipe_image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg"
+        recipe_image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
     }
     res.render('recipe_single', pageData );  
 });
@@ -158,9 +158,19 @@ app.post('/user-info/:id', async (req,res) => {
 //account page
 app.get('/account', async (req,res) => {
     let username = req.session.username;
-    const user = await User.findOne({username: username}).exec();
-    const userInfo = user.username
+    const userInfo = username
     res.render('account', {userInfo});
+});
+
+// favourites page
+app.get('/favourites', async (req,res) => {
+    let username = req.session.username;
+    var pageData = {
+        userInfo : username,
+        recipe_title : "Ramen Noodle Coleslaw",
+        recipe_image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+    }
+    res.render('favourites', pageData);
 });
 
 // search page
@@ -241,7 +251,7 @@ app.get('/signup_process', (req,res) => {
 });
 
 /* delete account */
-app.get('/delete_account',(req,res) => {
+app.get('/delete_account/:id',(req,res) => {
     if(req.session.loggedIn) {
         var username = req.session.username;
         User.findOneAndDelete({username:username}).exec(function(err, user){

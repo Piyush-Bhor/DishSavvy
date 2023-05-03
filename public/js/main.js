@@ -8,10 +8,20 @@ function toggleFilter(){
 }
 
 function togglePassword(){
-    var x = document.getElementById("password");
-    if (x.type === "password") {
-        x.type = "text";
+    let field = document.getElementById("password");
+    if (field.type === "password") {
+        field.type = "text";
     } else {
-        x.type = "password";
+        field.type = "password";
+    }
+}
+
+function toggleFavourites(){
+    let star = document.getElementById("thing");
+    if(star.style.color=="black"){
+        star.style.color="gold";
+    }
+    else{
+        star.style.color="black";
     }
 }

@@ -4,11 +4,18 @@
     font-family: 'Poppins', 'Sans Serif';
 }
 
+body{
+    position: relative;
+    min-height: 100vh;
+}
+
+main{
+    padding-bottom:200px;
+}
+
 button{
     border:none;
-    padding:5px;
-    padding-left:15px;
-    padding-right:15px;
+    padding:5px 15px 5px 15px;
     border-radius:20px;
 }
 
@@ -34,7 +41,7 @@ button{
     position:absolute;
     left:5%;
     top:5%;
-    color:grey;
+    color:black;
     font-size: 26px;
     transition: 0.3s;
 }
@@ -80,6 +87,30 @@ nav a{
     color:black;
     text-decoration: none;
     transition: 0.3s;
+    font-size:18px;
+}
+
+.hover-effect{
+    display: inline-block;
+    position: relative;
+}
+
+.hover-effect::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #6A994E;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+  
+.hover-effect:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 nav a:hover{
@@ -88,28 +119,34 @@ nav a:hover{
 }
 
 nav button{
-    background-color:#A7C957;
+    background-color:#386641;
+    color:white;
     transition:0.3s;
 }
 
 nav button:hover{
     cursor:pointer;
-    background-color:#386641;
-    color:white;
+    background-color:#A7C957;
+    color:black
 }
 /*** FOOTER ***/
 footer{
-    margin-top:auto;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-top:50px;
     padding:1rem;
     background-color: #386641;
     color:white;
     text-align: center;
+    height:175px;
 }
 
 .footer-container{
     width:90%;
     display:grid;
     grid-template-columns: 1fr 1fr;
+    
 }
 
 footer img{
@@ -128,14 +165,9 @@ footer a:hover{
     color:#A7C957;
     text-decoration:none;
 }
-
-#copyright{
-    margin-top:20px;
-}
-
 /*media queries*/
-@media screen and (max-width: 1000px) {
-    .head-container{
+@media screen and (max-width: 1020px) {
+    .head-container, .header-loggedin{
         grid-template-columns: 0.5fr 1fr 1fr;
     }
     .recipe i{
@@ -144,8 +176,46 @@ footer a:hover{
 }
 
 @media screen and (max-width:800px){
+    .head-container, .header-loggedin{
+        grid-template-columns: 1fr 1fr 1fr;
+        gap:0;
+    }
+
     .generated{
         grid-template-columns: 1fr;
+    }
+    h3{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width:650px){
+    nav{
+        padding-left:20px;
+    }
+    .head-container, .header-loggedin{
+        display:flex;
+        flex-direction: column;
+    }
+    .sitelinks{
+        display:flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .signin{
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        margin:0 auto;
+        width:100%
+    }
+    nav button{
+        background-color:white;
+        color:black;
+    }
+    nav button:hover{
+        background-color:#6A994E;
+        color:white;
     }
 }
 
@@ -191,8 +261,4 @@ footer a:hover{
 
 .signin ul li:hover ul{/* applies styles only to the sub menu whose parent <li> is hovered */
     display: block; /* show the sub menu when a user brings their mouse over the parent <li> */
-}
-
-.sitelinks a{
-    margin-left:20px;
 }

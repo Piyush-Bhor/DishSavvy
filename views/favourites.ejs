@@ -5,11 +5,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favourites</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/account.css">
+    <script src="/js/main.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/596cb36e7c.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <header>
+        <%if(userInfo){%>
+        <div class="header-loggedin">
+            <img id="logo" src="/img/placeholder.png">
+            <nav class="sitelinks">
+                <a href="/">Home</a>
+                <a href="/search">Search</a>
+            </nav>
+            <nav class="signin">
+                <ul>
+                    <li>
+                        <a href="/account">Hello, <%= userInfo %></a>
+                    <ul>
+                        <li><a href="/account">My Account</li></a>
+                        <li><a href="/favourites">Favourites</li></a>
+                        <li><a href="/logout">Logout</li></a>
+                    </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <%}else{%>
+        <div class="head-container">
+            <img id="logo" src="/img/placeholder.png">
+            <nav>
+                <a href="/">Home</a>
+                <a href="/search">Search</a>
+            </nav>
+            <nav class="signin">
+                <a href="/login">Login</a>
+                <a href="/signup"><button>Sign Up</button></a>
+            </nav>
+        </div>
+        <%}%>
+    </header>
+<body>
     <main>
-        <!--grid of favourite recipes here-->
-        <!--use IDs in DB in the api request -->
+        <section class="fav-text">
+            <h1>Favourites</h1>
+            <p>Your best recipes</p>
+        </section>
+        <div class="favourites">
+            <!--grid of favourite recipes here-->
+            <!--use IDs in DB in the api request -->
+            <div class="recipe">
+                <!--onclick="toggleFavourites(pageData.id)""-->
+                <i class="fa-solid fa-star" id="thing" onclick="toggleFavourites()"></i>
+                <img src="<%= recipe_image %>" alt="food" />
+                <div class="recipe-info">
+                    <h4><%= recipe_title %></h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                        veniam
+                    </p>
+                </div>
+            </div>
+        </div>
     </main>
+    <footer>
+        <div class="footer-container">
+            <section class="links">
+                <p class="font-weight-bold">Useful Links</p>
+                <a href="/">Home</a>
+                <a href="/search">Search</a>
+                <a href="https://spoonacular.com/food-api">Spoonacular API</a>
+            </section>
+            <section>
+                <p class="font-weight-bold">Socials</p>
+                <img src="img/github.png">
+            </section>
+        </div>
+        <p id="copyright">&copy;  2023</p>
+    </footer>
 </body>
 </html>

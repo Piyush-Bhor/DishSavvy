@@ -9,7 +9,7 @@
             <a href="/search"><button>Try Now</button></a>
         </div>
         
-        <img id="hero-img" src="img/hero2.jpg">
+        <img id="hero-img" src="img/hero3.png">
     </section>
     <section class="suggested-recipes">
         <h3>Try these tasty recipes</h3>
@@ -18,10 +18,11 @@
             
             <%// pageData.forEach(item => { %>
                 <div class="recipe">
-                    <i class="fa-solid fa-star" onclick=""></i>
+                    <!--onclick="toggleFavourites(pageData.id)""-->
+                    <i class="fa-solid fa-star" id="thing" onclick="toggleFavourites()"></i>
                     <img src="<%= recipe_image %>" alt="food" />
                     <div class="recipe-info">
-                        <%= recipe_title %>
+                        <h4><%= recipe_title %></h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
                             tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
                             veniam
