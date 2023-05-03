@@ -5,6 +5,11 @@ main{
 
 .searchBar{
     text-align: center;
+    width:50%;
+    margin:auto;
+}
+.searchInput{
+    width:30%;
 }
 
 h1{
@@ -12,9 +17,30 @@ h1{
     color:#BC4749;
 }
 
+form{
+    margin:auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 #filter-form{
     display:none;
+    border: 2px solid #BC4749;
+    padding:1rem;
+    border-radius:20px;
+    margin-top:20px;
+    /*visibility:visible;
+    display:flex;
+    flex-direction: column;
+    width:80%;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 10px rgb(164, 164, 164);*/
 }
+
+
 
 form{
     width:100%;
