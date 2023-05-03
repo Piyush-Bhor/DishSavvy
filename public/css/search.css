@@ -9,7 +9,11 @@ main{
     margin:auto;
 }
 .searchInput{
-    width:30%;
+    width:50%;
+}
+
+@media screen and (max-width: 600px) {
+
 }
 
 h1{

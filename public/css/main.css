@@ -4,6 +4,10 @@
     font-family: 'Poppins', 'Sans Serif';
 }
 
+#logo{
+    width:250px;
+}
+
 body{
     position: relative;
     min-height: 100vh;
@@ -33,8 +37,20 @@ button{
 .recipe{
     position: relative;
     border-radius: 20px;
-    
+    transition:0.3s;
     box-shadow: 5px 5px 10px rgb(164, 164, 164);
+    text-decoration: none;
+    
+}
+
+.recipe a{
+    text-decoration: none;
+    color:black
+}
+
+.recipe a:hover{
+    text-decoration:none;
+    color:black
 }
 
 .recipe i{
@@ -42,8 +58,13 @@ button{
     left:5%;
     top:5%;
     color:black;
-    font-size: 26px;
     transition: 0.3s;
+    font-size: 26px;
+}
+
+.recipe:hover{
+    transform: scale(1.02);
+    text-decoration: none;
 }
 
 .recipe i:hover{
