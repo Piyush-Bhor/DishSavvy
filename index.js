@@ -51,19 +51,6 @@ app.get('/',(req, res) => {
     async_random();
 });
 
-// get recipe detail
-app.get('/detail',(req, res) => {
-    const recipeAPI = require('./api/recipe_detail');
-    const async_detail = async () => {
-        const response = await recipeAPI.get_detail(479101);
-        var pageData = {
-            recipe : response.data,
-        }
-        res.render('recipe_single',pageData);
-    }
-    async_detail();
-});
-
 // search results
 app.get('/search_result',(req,res) => {
     var recipe_name = req.query.search;
@@ -78,16 +65,17 @@ app.get('/search_result',(req,res) => {
     async_random();
 });
 
+
 // get recipe detail
-app.get('/detail',(req, res) => {
+app.get('/detail/:id',(req, res) => {
+    var recipe_id = req.params.id;
     const recipeAPI = require('./api/recipe_detail');
     const async_detail = async () => {
-        const response = await recipeAPI.get_detail(479101);
+        const response = await recipeAPI.get_detail(recipe_id);
         var pageData = {
             recipe : response.data,
         }
         res.render('recipe_single',pageData);
-        console.log(response.data);
     }
     async_detail();
 });
@@ -285,3 +273,76 @@ app.get('/setup',function(req, res){
 // server start
 app.listen(8080);
 console.log('Server running at http://localhost:8080');
+
+
+
+// DUMMY TESTING API ROUTES
+
+/*
+// home page - random recipes
+app.get('/',(req, res) => {
+    var pageData = {
+        recipes : {
+            0 : {
+                id:156992,
+                title : "Ramen Noodle Coleslaw",
+                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            },
+            1 : {
+                id:1,
+                title : "Ramen Noodle Coleslaw",
+                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            },
+            2 : {
+                id:2,
+                title : "Ramen Noodle Coleslaw",
+                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            },
+            3 : {
+                id:3,
+                title : "Ramen Noodle Coleslaw",
+                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            }
+        }
+    }
+    res.render('home',pageData);
+});
+
+
+// get recipe detail
+app.get('/detail',(req, res) => {
+    var pageData = {
+        recipe : {
+            title : "Ramen Noodle Coleslaw",
+            image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            id : 12345,
+            sourceUrl : 'http://feedmephoebe.com/2013/11/job-food52s-pan-roasted-cauliflower/'
+        }
+    }
+    res.render('recipe_single', pageData );  
+});
+*/
+
+// search results
+app.get('/search_result',(req,res) => {
+    var pageData = {
+        recipes : {
+            0 : {
+                id:0,
+                title : "Ramen Noodle Coleslaw",
+                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            },
+            1 : {
+                id:1,
+                title : "Ramen Noodle Coleslaw",
+                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            },
+            2 : {
+                id:2,
+                title : "Ramen Noodle Coleslaw",
+                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            }
+        }
+    }
+    res.render('search',pageData);
+});
