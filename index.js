@@ -45,18 +45,22 @@ app.get('/',(req, res) => {
     var pageData = {
         recipes : {
             0 : {
+                id:0,
                 title : "Ramen Noodle Coleslaw",
                 image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
             },
             1 : {
+                id:1,
                 title : "Ramen Noodle Coleslaw",
                 image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
             },
             2 : {
+                id:2,
                 title : "Ramen Noodle Coleslaw",
                 image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
             },
             3 : {
+                id:3,
                 title : "Ramen Noodle Coleslaw",
                 image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
             }
