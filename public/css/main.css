@@ -99,7 +99,7 @@ nav button:hover{
 }
 /*** FOOTER ***/
 footer{
-    margin-top:50px;
+    margin-top:auto;
     padding:1rem;
     background-color: #386641;
     color:white;

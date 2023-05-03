@@ -3,16 +3,26 @@
     width:100%;
 }
 
+
+
 #large-text{
     font-size: 72px;
     font-weight: 900;
     width:60%;
     
+    text-align: center;
+    margin:auto;
 }
 
 .hero{
     position: relative;
     text-align: left;
+    text-align: center;
+    margin:auto;
+}
+
+.hero img{
+    /*filter:blur(5px);*/
 }
 
 .inner{
@@ -36,6 +46,7 @@
 
 .suggested-recipes{
     margin-top:30px;
+    margin-bottom:50px;
 }
 
 .suggested-recipes h3{

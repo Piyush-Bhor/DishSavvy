@@ -1,14 +1,14 @@
 form{
     width:35%;
     margin:auto;
-    border:2px solid black;
     padding:1rem;
     
 }
 
-h1{
+h2{
     text-align: center;
     margin-top:20px;
+    color:#BC4749;
 }
 
 .inputs{
@@ -16,13 +16,17 @@ h1{
     flex-direction: column;
     row-gap: 30px;
     justify-content: center;
+    margin-top:30px;
 }
 
 input[type=email], input[type=password], input[type=text]{
-    padding:5px;
+    /*padding:5px;
     color:black;
     background-color: rgb(227, 227, 227);
-    border:none;
+    border:none;*/
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid grey
 }
 
 input[type=submit]{

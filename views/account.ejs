@@ -1,12 +1,34 @@
 <%- include('includes/header') %>
 <link rel="stylesheet" type="text/css" href="/css/account.css">
-<%- include('includes/nav-loggedin') %>
+<%if(userInfo){%>
+<div class="header-loggedin">
+    <img id="logo" src="/img/placeholder.png">
+    <nav class="sitelinks">
+        <a href="/">Home</a>
+        <a href="/search">Search</a>
+    </nav>
+    <nav class="signin">
+        <ul>
+            <li>
+                <a href="/account">Hello, <%= userInfo %></a>
+            <ul>
+                <li><a href="/account">My Account</li></a>
+                <li><a href="/favourites">Favourites</li></a>
+                <li><a href="/logout">Logout</li></a>
+            </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
+<%}else{%>
+<%- include('includes/nav')%>
+<%}%>
 <main>
     <h2>My Account</h2>
     <div class="account-container">
         <section>
             <article>
-                <a href=""><h4 class="font-weight-bold">My Information</h4></a>
+                <a href="/user-info"><h4 class="font-weight-bold">My Information</h4></a>
                 <p>View, Edit Information</p>
             </article>
             
@@ -18,6 +40,14 @@
             </article>
         </section>
     </div>
+    <!-- login message -->
+<%
+if(typeof(login_msg) != 'undefined'){
+  %>
+  <br><br><div class="alert alert-success" role="alert"> <%= login_msg %> </div>  
+  <%
+}
+%>
     
 </main>
 <%- include('includes/footer') %>

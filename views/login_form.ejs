@@ -3,7 +3,7 @@
 <%- include('includes/nav') %>
 <main>
     <form action="/loginprocess">
-        <h1> Login </h1>
+        <h2> Login </h2>
         <div class="inputs">
           <input type="email" name="username" placeholder="Email">
           <input type="password" name="password" placeholder="Password">
@@ -12,14 +12,5 @@
         
     </form>
 </main>
-
-<!-- login message -->
-<%
-if(typeof(login_msg) != 'undefined'){
-  %>
-  <br><br><div class="alert alert-success" role="alert"> <%= login_msg %> </div>  
-  <%
-}
-%>
 
 <%- include('includes/footer') %>

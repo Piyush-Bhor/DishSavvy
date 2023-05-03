@@ -4,6 +4,7 @@ const path = require('path');
 require("dotenv").config();
 const mongoose = require('mongoose');
 const session = require('express-session');
+const { userInfo } = require('os');
 
 app = express();
 
@@ -73,6 +74,14 @@ app.get('/',(req, res) => {
     async_random();
 });
 
+//get 6 results
+    const async_random = async () => {
+        const response = await recipeAPI.get_random_recipe(6,['vegetarian','dessert']);
+        var pageData = response.data.recipes;
+        res.render('home', { pageData });
+    }
+    async_random();
+
 // get recipe detail
 app.get('/detail',(req, res) => {
     const recipeAPI = require('./api/recipe_detail');
@@ -85,16 +94,23 @@ app.get('/detail',(req, res) => {
         res.render('recipe_single',pageData);
     }
     async_detail();
+});*/
 
-    //get 6 results
-    const async_random = async () => {
-        const response = await recipeAPI.get_random_recipe(6,['vegetarian','dessert']);
-        var pageData = response.data.recipes;
-        res.render('home', { pageData });
+// get recipes using keywords (havent really tested this yet)
+/*ingredients will be an array, when the user
+adds a comma they separate eleements */
+/*app.get('search',(req, res) => {
+    let ingredients = req.body.ingredients;
+    const recipeAPI = require('./api/recipe_search');
+    const async_detail = async () =>{
+        const response = await recipeAPI.get_recipes(9, ingredients);
+        var pageData = {
+            recipe_title : response.data.recipes[0].title,
+            recipe_image : response.data.recipes[0].image,
+        }
+        res.render('recipe_single',pageData);
     }
-    async_random();
-});
-*/
+});*/
 
 // add to favorite 
 app.get('/add',(req,res) => {
@@ -117,9 +133,34 @@ app.get('/add',(req,res) => {
     }
 });
 
+//user info page
+app.get('/user-info', async (req,res) => {
+    let username = req.session.username;
+    const userInfo = await User.findOne({username: username}).exec();
+    res.render('user_info', {userInfo})
+});
+
+//user info page
+app.post('/user-info/:id', async (req,res) => {
+    req.session.loggedIn = true;
+    let username = req.body.usernames;
+    let password = req.body.password;
+    let userInfo = username;
+
+    await User.updateOne(
+        { username, password },
+        { new: true }
+      ).exec();
+
+    res.render('account', {userInfo})
+});
+
 //account page
-app.get('/account',(req,res) => {
-    res.render('account');
+app.get('/account', async (req,res) => {
+    let username = req.session.username;
+    const user = await User.findOne({username: username}).exec();
+    const userInfo = user.username
+    res.render('account', {userInfo});
 });
 
 // search page
@@ -145,10 +186,12 @@ app.get('/loginprocess',(req,res) => {
             // save in session
             req.session.username = user.username;
             req.session.loggedIn = true;
+
             var pageData = {
-                login_msg : "Login Successful!"
+                login_msg : "Login Successful!",
+                userInfo : req.session.username
             }
-            res.render('login_form', pageData);
+            res.render('account', pageData);
         }
     }).catch((err) => {
         res.send(err);
