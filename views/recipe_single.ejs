@@ -2,22 +2,35 @@
 <link rel="stylesheet" type="text/css" href="/css/recipe.css">
 <%- include('includes/nav') %>
 
-<main>
+<main style="text-align: center;">
     <h1><%= recipe.title %></h1>
-    <img src="<%= recipe.image %>" alt="food" />
-    <!--get ingredients, description-->
+    <img src="<%= recipe.image %>" alt="food" /> <br>
     
+    <!--get ingredients, description-->
+    <h2> Recipe </h2>
+    <p> <%= recipe.instructions %> </p> <br>
     <table>
-        <!--get the ingredient name, original (amount of ingredient)-->
-        <!--for example, 1 teaspoon vanilla-->
         <tr>
-            <th>Instructions</th>
-            <th>Ingredient</th>
+            <th>Health Score</th>
+            <th>Vegetarian</th>
+            <th>Vegan</th>
+            <th>Gluten Free</th>
+            <th>Dairy Free</th>
         </tr>
-    </table>
+        <tr>
+            <td><%= recipe.healthScore %></td>
+            <td><%= recipe.vegetarian %></td>
+            <td><%= recipe.vegan %></td>
+            <td><%= recipe.glutenFree %></td>
+            <td><%= recipe.dairyFree %></td>
+        </tr>
+    </table> <br>
 
     <!--link to source url-->
-    <a href="<%= recipe.sourceUrl %>" alt="original recipe"><button>Read More</button></a>
+    <div style="text-align: center;"> 
+        <a href="<%= recipe.sourceUrl %>" alt="original recipe"><button>Read More</button></a>
+    </div>
+    
 </main>
 
 <%- include('includes/footer') %>
