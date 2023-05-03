@@ -65,7 +65,6 @@ app.get('/search_result',(req,res) => {
     async_random();
 });
 
-
 // get recipe detail
 app.get('/detail/:id',(req, res) => {
     var recipe_id = req.params.id;
@@ -321,7 +320,6 @@ app.get('/detail',(req, res) => {
     }
     res.render('recipe_single', pageData );  
 });
-*/
 
 // search results
 app.get('/search_result',(req,res) => {
@@ -346,3 +344,4 @@ app.get('/search_result',(req,res) => {
     }
     res.render('search',pageData);
 });
+*/

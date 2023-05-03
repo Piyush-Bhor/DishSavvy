@@ -33,7 +33,7 @@
               </div>
               <div class="col">
                 <div class="recipe">
-                    <a href="/detail">
+                    <a href="/detail/<%= recipes[1].id %>">
                     <i class="fa-solid fa-star" id="thing" onclick="toggleFavourites()"></i>
                     <img src="<%= recipes[1].image %>" alt="food" />
                     <div class="recipe-info">
@@ -50,7 +50,7 @@
             <div class="row">
               <div class="col">
                 <div class="recipe">
-                    <a href="/detail">
+                    <a href="/detail/<%= recipes[2].id %>">
                         <i class="fa-solid fa-star" id="thing" onclick="toggleFavourites()"></i>
                         <img src="<%= recipes[2].image %>" alt="food" />
                         <div class="recipe-info">
@@ -65,7 +65,7 @@
               </div>
               <div class="col">
                 <div class="recipe">
-                    <a href="/detail">
+                    <a href="/detail/<%= recipes[3].id %>">
                         <a href="/add/<%=recipes[3].id%>">
                         <i class="fa-solid fa-star" id="<%=recipes[3].id%>" onclick="toggleFavourites(recipe_id)"></i>
                         </a>

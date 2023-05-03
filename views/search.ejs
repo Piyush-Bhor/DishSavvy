@@ -14,19 +14,23 @@
             
             <div id="filter-form">
                 <h4 class="">Filters</h4>
-                <div class="filters">
-                    <label class="font-weight-bold">Sodium Level</label>
-                    <output>0 mg</output>
-                    <input oninput="this.previousElementSibling.value = this.value+' mg'" id="sodium" type="range" min="1" max="100" value="50">
-                    
-                    <label class="font-weight-bold">Carbohydrate Level</label>
-                    <output>0 g</output>
-                    <input oninput="this.previousElementSibling.value = this.value +' g'" id="carbs" type="range" min="1" max="100" value="50">
-                    
-                    <label class="font-weight-bold">Sugar Level</label>
-                    <output>0 g</output>
-                    <input oninput="this.previousElementSibling.value = this.value +' g'" id="sugar" type="range" min="1" max="100" value="50">
-                </div>
+                <div class="d-flex flex-column">
+                    <div class="p-2">
+                        <label class="font-weight-bold">Sodium Level</label>
+                        <output>0 mg</output>
+                        <input oninput="this.previousElementSibling.value = this.value+' mg'" id="sodium" type="range" min="1" max="100" value="50">
+                    </div>
+                    <div class="p-2">
+                        <label class="font-weight-bold">Carbohydrate Level</label>
+                        <output>0 g</output>
+                        <input oninput="this.previousElementSibling.value = this.value +' g'" id="carbs" type="range" min="1" max="100" value="50">
+                    </div>
+                    <div class="p-2">
+                        <label class="font-weight-bold">Sugar Level</label>
+                        <output>0 g</output>
+                        <input oninput="this.previousElementSibling.value = this.value +' g'" id="sugar" type="range" min="1" max="100" value="50">
+                    </div>
+                  </div>
             </div>
         </form>
     </section> <br> <br>
