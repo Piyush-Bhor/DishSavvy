@@ -79,6 +79,30 @@ app.get('/detail',(req, res) => {
     res.render('recipe_single', pageData );  
 });
 
+// search results
+app.get('/search_result',(req,res) => {
+    var pageData = {
+        recipes : {
+            0 : {
+                id:0,
+                title : "Ramen Noodle Coleslaw",
+                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            },
+            1 : {
+                id:1,
+                title : "Ramen Noodle Coleslaw",
+                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            },
+            2 : {
+                id:2,
+                title : "Ramen Noodle Coleslaw",
+                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            }
+        }
+    }
+    res.render('search',pageData);
+})
+
 /* Real Routes 
 
 // home page - random recipes
@@ -108,6 +132,19 @@ app.get('/detail',(req, res) => {
     }
     async_detail();
 });
+
+// search results
+app.get('/search_result',(req,res) => {
+    const recipeAPI = require('./api/search_nutrients');
+    const async_random = async () => {
+        const response = await recipeAPI.search_recipe('pasta',3,50,50,50);
+        var pageData = {
+            recipes : response.data.results,
+        }
+        res.render('search',pageData);
+    }
+    async_random();
+})
 */
 
 // add to favorite 
@@ -190,20 +227,6 @@ app.get('/favourites', async (req,res) => {
 app.get('/search', (req,res) => {
     res.render('search');
 });
-
-// search results
-app.get('/search_result',(req,res) => {
-    const recipeAPI = require('./api/search_nutrients');
-    const async_random = async () => {
-        const response = await recipeAPI.search_recipe('pasta',1,50,50,50);
-        var pageData = {
-            recipe_title : response.data.results[0].title,
-            recipe_image : response.data.results[0].image,
-        }
-        res.render('search',pageData);
-    }
-    async_random();
-})
 
 /* login & sign up */
 app.get('/signup',(req,res) => {
