@@ -27,106 +27,110 @@
                     <output>0 g</output>
                     <input oninput="this.previousElementSibling.value = this.value +' g'" id="sugar" type="range" min="1" max="100" value="50">
                 </div>
-                
             </div>
         </form>
-    </section>
+    </section> <br> <br>
     
-    <section class="generated">
-        <!--generated results go here-->
-        <!--for each result, get the image, title, card should look like this-->
-        <!--
-            <div class="recipe">
-            <i class="fa-solid fa-star" onclick=""></i>
-            <%
-            //if(typeof(recipe_title) != 'undefined'){
-            %>
-            <img src="<%= //recipe_image %>">
-            <div class="recipe-info">
-                <h2><%= //recipe_title %></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-                    veniam
-                </p>
+    <!--generated results go here-->
+    <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="recipe">
+                    <a href="/detail">
+                    <i class="fa-solid fa-star" onclick=""></i>
+                    <%
+                    if(typeof(recipes) != 'undefined'){
+                    %>
+                    <img src="<%= recipes[0].image %>">
+                    <div class="recipe-info">
+                        <h2><%= recipes[0].title %></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                            veniam
+                        </p>
+                    </div>
+                    <%
+                    } else {
+                    %>
+                    <img src="img/hero.jpg">
+                    <div class="recipe-info">
+                        <h2> Yummy Recipe </h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                            veniam
+                        </p>
+                    </div>
+                    </a>
+                    <% 
+                    }
+                    %>
+                </div>
+              </div>
+              <div class="col">
+                <div class="recipe">
+                    <a href="/detail">
+                    <i class="fa-solid fa-star" onclick=""></i>
+                    <%
+                    if(typeof(recipes) != 'undefined'){
+                    %>
+                    <img src="<%= recipes[1].image %>">
+                    <div class="recipe-info">
+                        <h2><%= recipes[1].title %></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                            veniam
+                        </p>
+                    </div>
+                    <%
+                    } else {
+                    %>
+                    <img src="img/hero.jpg">
+                    <div class="recipe-info">
+                        <h2> Yummy Recipe </h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                            veniam
+                        </p>
+                    </div>
+                    </a>
+                    <% 
+                    }
+                    %>
+                </div>
+              </div>
+              <div class="col">
+                <div class="recipe">
+                    <a href="/detail">
+                    <i class="fa-solid fa-star" onclick=""></i>
+                    <%
+                    if(typeof(recipes) != 'undefined'){
+                    %>
+                    <img src="<%= recipes[2].image %>">
+                    <div class="recipe-info">
+                        <h2><%= recipes[2].title %></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                            veniam
+                        </p>
+                    </div>
+                    <%
+                    } else {
+                    %>
+                    <img src="img/hero.jpg">
+                    <div class="recipe-info">
+                        <h2> Yummy Recipe </h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                            veniam
+                        </p>
+                    </div>
+                    </a>
+                    <% 
+                    }
+                    %>
+                </div>
+              </div>
             </div>
-            <%
-           // } else {
-            %>
-            <img src="img/hero.jpg">
-            <div class="recipe-info">
-                <h2> Yummy Recipe </h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-                    veniam
-                </p>
-            </div>-->
-            <% 
-            //}
-            %>
-        <!--</div>-->
-        <div class="recipe">
-            <a href="/detail">
-            <i class="fa-solid fa-star" onclick=""></i>
-            <%
-            if(typeof(recipes) != 'undefined'){
-            %>
-            <img src="<%= recipes[1].image %>">
-            <div class="recipe-info">
-                <h2><%= recipes[1].title %></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-                    veniam
-                </p>
-            </div>
-            <%
-            } else {
-            %>
-            <img src="img/hero.jpg">
-            <div class="recipe-info">
-                <h2> Yummy Recipe </h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-                    veniam
-                </p>
-            </div>
-            </a>
-            <% 
-            }
-            %>
-        </div>
-        <div class="recipe">
-            <a href="/detail">
-            <i class="fa-solid fa-star" onclick=""></i>
-            <%
-            if(typeof(recipes) != 'undefined'){
-            %>
-            <img src="<%= recipes[2].image %>">
-            <div class="recipe-info">
-                <h2><%= recipes[2].title %></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-                    veniam
-                </p>
-            </div>
-            </a>
-            <% 
-            }
-            %>
-        </div>
-            
-        <div class="recipe">
-            <a href="/detail">
-            <i class="fa-solid fa-star" onclick=""></i>
-            <img src="img/hero.jpg">
-            <div class="recipe-info">
-                <h2> Yummy Recipe </h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-                    veniam
-                </p>
-            </div>
-            </a>
-        </div>
     </section>
 </main>
 <%- include('includes/footer') %>

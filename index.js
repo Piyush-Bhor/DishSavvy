@@ -72,9 +72,12 @@ app.get('/',(req, res) => {
 // get recipe detail
 app.get('/detail',(req, res) => {
     var pageData = {
-        recipe_title : "Ramen Noodle Coleslaw",
-        recipe_image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
-        recipe_id : 12345
+        recipe : {
+            title : "Ramen Noodle Coleslaw",
+            image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            id : 12345,
+            sourceUrl : 'http://feedmephoebe.com/2013/11/job-food52s-pan-roasted-cauliflower/'
+        }
     }
     res.render('recipe_single', pageData );  
 });
@@ -124,9 +127,7 @@ app.get('/detail',(req, res) => {
     const async_detail = async () => {
         const response = await recipeAPI.get_detail(479101);
         var pageData = {
-            recipe_title : response.data.recipes[0].title,
-            recipe_image : response.data.recipes[0].image,
-            recipe_id : response.data.recipes[0].id
+            recipe : response.data,
         }
         res.render('recipe_single',pageData);
     }
@@ -145,7 +146,7 @@ app.get('/search_result',(req,res) => {
         res.render('search',pageData);
     }
     async_random();
-})
+});
 */
 
 // add to favorite 
