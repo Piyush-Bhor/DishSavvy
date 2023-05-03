@@ -6,13 +6,28 @@
         <h1>Search Recipes</h1>
         <p>Search to your heart's content!</p>
         <form action="/search_result">
-            <button type="button" class="filter" onclick="toggleFilter()"><i class="fa-solid fa-filter"></i> Filter</button>
-            <input type="text" placeholder="Search...">
-            <button type="submit"><i class="fa fa-search"></i></button>
+            <div>
+                <button type="button" class="filter" onclick="toggleFilter()"><i class="fa-solid fa-filter"></i> Filter</button>
+                <input class="searchInput" type="text" placeholder="Search...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
             
             <div id="filter-form">
-                <input type="checkbox"> Low Sugar
-                <input type="checkbox"> Vegan
+                <h4 class="">Filters</h4>
+                <div class="filters">
+                    <label class="font-weight-bold">Sodium Level</label>
+                    <output>0 mg</output>
+                    <input oninput="this.previousElementSibling.value = this.value+' mg'" id="sodium" type="range" min="1" max="100" value="50">
+                    
+                    <label class="font-weight-bold">Carbohydrate Level</label>
+                    <output>0 g</output>
+                    <input oninput="this.previousElementSibling.value = this.value +' g'" id="carbs" type="range" min="1" max="100" value="50">
+                    
+                    <label class="font-weight-bold">Sugar Level</label>
+                    <output>0 g</output>
+                    <input oninput="this.previousElementSibling.value = this.value +' g'" id="sugar" type="range" min="1" max="100" value="50">
+                </div>
+                
             </div>
         </form>
     </section>
@@ -47,6 +62,7 @@
             <% 
             }
             %>
+        
 
         </div>
         <div class="recipe">

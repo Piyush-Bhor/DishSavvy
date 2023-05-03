@@ -7,6 +7,15 @@ function toggleFilter(){
     }
 }
 
+/*function toggleFilter(){
+    if(document.getElementById('filter-form').style.visibility == "visible"){
+        document.getElementById('filter-form').style.visibility = "hidden";
+    }
+    else{
+        document.getElementById('filter-form').style.visibility = "visible";
+    }
+}*/
+
 function togglePassword(){
     let field = document.getElementById("password");
     if (field.type === "password") {

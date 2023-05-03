@@ -199,6 +199,7 @@ app.get('/search_result',(req,res) => {
         var pageData = {
             recipe_title : response.data.results[0].title,
             recipe_image : response.data.results[0].image,
+            recipe_id : response.data.results[0].id
         }
         res.render('search',pageData);
     }
