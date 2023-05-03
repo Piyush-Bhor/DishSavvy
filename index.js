@@ -38,76 +38,6 @@ app.use(session({
 
 // routes
 
-/* Dummy API routes */
-
-// home page - random recipes
-app.get('/',(req, res) => {
-    var pageData = {
-        recipes : {
-            0 : {
-                id:0,
-                title : "Ramen Noodle Coleslaw",
-                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
-            },
-            1 : {
-                id:1,
-                title : "Ramen Noodle Coleslaw",
-                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
-            },
-            2 : {
-                id:2,
-                title : "Ramen Noodle Coleslaw",
-                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
-            },
-            3 : {
-                id:3,
-                title : "Ramen Noodle Coleslaw",
-                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
-            }
-        }
-    }
-    res.render('home',pageData);
-});
-
-// get recipe detail
-app.get('/detail',(req, res) => {
-    var pageData = {
-        recipe : {
-            title : "Ramen Noodle Coleslaw",
-            image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
-            id : 12345,
-            sourceUrl : 'http://feedmephoebe.com/2013/11/job-food52s-pan-roasted-cauliflower/'
-        }
-    }
-    res.render('recipe_single', pageData );  
-});
-
-// search results
-app.get('/search_result',(req,res) => {
-    var pageData = {
-        recipes : {
-            0 : {
-                id:0,
-                title : "Ramen Noodle Coleslaw",
-                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
-            },
-            1 : {
-                id:1,
-                title : "Ramen Noodle Coleslaw",
-                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
-            },
-            2 : {
-                id:2,
-                title : "Ramen Noodle Coleslaw",
-                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
-            }
-        }
-    }
-    res.render('search',pageData);
-})
-
-/* Real Routes 
-
 // home page - random recipes
 app.get('/',(req, res) => {
     const recipeAPI = require('./api/recipe_random');
@@ -147,7 +77,20 @@ app.get('/search_result',(req,res) => {
     }
     async_random();
 });
-*/
+
+// get recipe detail
+app.get('/detail',(req, res) => {
+    const recipeAPI = require('./api/recipe_detail');
+    const async_detail = async () => {
+        const response = await recipeAPI.get_detail(479101);
+        var pageData = {
+            recipe : response.data,
+        }
+        res.render('recipe_single',pageData);
+        console.log(response.data);
+    }
+    async_detail();
+});
 
 // add to favorite 
 app.get('/add/:id',(req,res) => {
