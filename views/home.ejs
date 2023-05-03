@@ -63,8 +63,10 @@
                   <div class="col">
                     <div class="recipe">
                         <!--onclick="toggleFavourites(pageData.id)""-->
-                        <i class="fa-solid fa-star" id="thing" onclick="toggleFavourites()"></i>
-                        <img src="<%= recipes[3].image %>" alt="food" />
+                        <a href="/add/<%=recipe_id%>">
+                        <i class="fa-solid fa-star" id="<%=recipe_id%>" onclick="toggleFavourites(recipe_id)"></i>
+                        </a>
+                    <img src="<%= recipes[3].image %>" alt="food" />
                         <div class="recipe-info">
                             <h4><%= recipes[3].title %></h4>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
