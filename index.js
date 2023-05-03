@@ -135,9 +135,10 @@ app.get('/detail',(req, res) => {
 
 // search results
 app.get('/search_result',(req,res) => {
+    var recipe_name = req.query.search;
     const recipeAPI = require('./api/search_nutrients');
     const async_random = async () => {
-        const response = await recipeAPI.search_recipe('pasta',3,50,50,50);
+        const response = await recipeAPI.search_recipe(recipe_name,3,50,50,50);
         var pageData = {
             recipes : response.data.results,
         }

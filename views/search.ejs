@@ -8,7 +8,7 @@
         <form action="/search_result">
             <div>
                 <button type="button" class="filter" onclick="toggleFilter()"><i class="fa-solid fa-filter"></i> Filter</button>
-                <input class="searchInput" type="text" placeholder="Search...">
+                <input class="searchInput" name="search" type="text" placeholder="Search...">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </div>
             
@@ -68,9 +68,9 @@
             <%
             if(typeof(recipes) != 'undefined'){
             %>
-            <img src="<%= recipes[0].image %>">
+            <img src="<%= recipes[1].image %>">
             <div class="recipe-info">
-                <h2><%= recipes[0].title %></h2>
+                <h2><%= recipes[1].title %></h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
                     veniam
@@ -97,9 +97,9 @@
             <%
             if(typeof(recipes) != 'undefined'){
             %>
-            <img src="<%= recipes[0].image %>">
+            <img src="<%= recipes[2].image %>">
             <div class="recipe-info">
-                <h2><%= recipes[0].title %></h2>
+                <h2><%= recipes[2].title %></h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
                     veniam
