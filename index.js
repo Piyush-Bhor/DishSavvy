@@ -140,19 +140,30 @@ app.get('/user-info', async (req,res) => {
     res.render('user_info', {userInfo})
 });
 
-//user info page -need to fix
-app.post('/user-info/:id', async (req,res) => {
-    req.session.loggedIn = true;
-    let username = req.body.usernames;
-    let password = req.body.password;
-    let userInfo = username;
-
-    await User.updateOne(
-        { username, password },
-        { new: true }
-      ).exec();
-
-    res.render('account', {userInfo})
+// update details process
+app.get('/update/:id', (req,res) => {
+    if(req.session.loggedIn) {
+        let new_username = req.query.username;
+        let new_password = req.query.password;
+        User.findOneAndUpdate({username: req.session.username}).then((user) => {
+            if(user){ 
+                user.username = new_username;
+                user.password = new_password;
+                user.save();
+                
+                var pageData = {
+                    update_msg : "Details Updated!",
+                    userInfo : user
+                }
+                res.render('user_info',pageData);
+            }
+        }).catch((err) => {
+            res.send(err);
+        });
+    }
+    else {
+        res.redirect('/login');
+    }
 });
 
 //account page

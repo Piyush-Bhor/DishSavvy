@@ -50,7 +50,7 @@
     <main>
         <h2>Edit your Information</h2>
         <%if(userInfo){%>
-        <form method="post" action="/user-info/<%= userInfo.id %>">
+        <form action="/update/<%= userInfo.id %>">
             <div>
                 <label for="name">Username:</label>  
                 <input type="email" name="username" value="<%= userInfo.username %>">
@@ -68,6 +68,14 @@
         <%}else{%>
             <p class="expired">Your session expired. Please log in again.</p>
         <%}%>
+        <!-- details updated message -->
+        <%
+        if(typeof(update_msg) != 'undefined'){
+        %>
+        <div class="alert alert-success" role="alert"><%= update_msg %></div> 
+        <%
+        }
+        %>
     </main>
     <footer>
         <div class="footer-container">
