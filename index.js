@@ -43,11 +43,26 @@ app.use(session({
 // home page - random recipes
 app.get('/',(req, res) => {
     var pageData = {
-        recipe_title : "Ramen Noodle Coleslaw",
-        recipe_image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg"
+        recipes : {
+            0 : {
+                title : "Ramen Noodle Coleslaw",
+                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            },
+            1 : {
+                title : "Ramen Noodle Coleslaw",
+                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            },
+            2 : {
+                title : "Ramen Noodle Coleslaw",
+                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            },
+            3 : {
+                title : "Ramen Noodle Coleslaw",
+                image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+            }
+        }
     }
     res.render('home',pageData);
-    
 });
 
 // get recipe detail
@@ -59,28 +74,20 @@ app.get('/detail',(req, res) => {
     res.render('recipe_single', pageData );  
 });
 
-/*
+/* Real Routes 
+
 // home page - random recipes
 app.get('/',(req, res) => {
     const recipeAPI = require('./api/recipe_random');
     const async_random = async () => {
-        const response = await recipeAPI.get_random_recipe(1,['vegetarian','dessert']);
+        const response = await recipeAPI.get_random_recipe(4,['vegetarian','dessert']);
         var pageData = {
-            recipe_title : response.data.recipes[0].title,
-            recipe_image : response.data.recipes[0].image,
+            recipes : response.data.recipes,
         }
         res.render('home',pageData);
     }
     async_random();
 });
-
-//get 6 results
-    const async_random = async () => {
-        const response = await recipeAPI.get_random_recipe(6,['vegetarian','dessert']);
-        var pageData = response.data.recipes;
-        res.render('home', { pageData });
-    }
-    async_random();
 
 // get recipe detail
 app.get('/detail',(req, res) => {
@@ -94,23 +101,8 @@ app.get('/detail',(req, res) => {
         res.render('recipe_single',pageData);
     }
     async_detail();
-});*/
-
-// get recipes using keywords (havent really tested this yet)
-/*ingredients will be an array, when the user
-adds a comma they separate eleements */
-/*app.get('search',(req, res) => {
-    let ingredients = req.body.ingredients;
-    const recipeAPI = require('./api/recipe_search');
-    const async_detail = async () =>{
-        const response = await recipeAPI.get_recipes(9, ingredients);
-        var pageData = {
-            recipe_title : response.data.recipes[0].title,
-            recipe_image : response.data.recipes[0].image,
-        }
-        res.render('recipe_single',pageData);
-    }
-});*/
+});
+*/
 
 // add to favorite 
 app.get('/add',(req,res) => {

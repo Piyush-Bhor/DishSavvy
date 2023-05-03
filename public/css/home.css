@@ -47,6 +47,7 @@
 .suggested-recipes{
     margin-top:30px;
     margin-bottom:50px;
+    text-align: center;
 }
 
 .suggested-recipes h3{
@@ -54,6 +55,10 @@
     margin:auto;
     color:#BC4749;
     font-weight: 700;
+}
+
+.suggested-recipes .col {
+    padding-bottom: 20px;
 }
 
 @media screen and (max-width: 1000px) {
