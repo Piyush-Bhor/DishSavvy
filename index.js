@@ -157,7 +157,15 @@ app.get('/favourites', async (req,res) => {
 
 // search page
 app.get('/search', (req,res) => {
-    res.render('search');
+    const recipeAPI = require('./api/recipe_random');
+    const async_random = async () => {
+        const response = await recipeAPI.get_random_recipe(3,['dessert']);
+        var pageData = {
+            recipes : response.data.recipes,
+        }
+        res.render('search',pageData);
+    }
+    async_random();
 });
 
 /* login & sign up */
