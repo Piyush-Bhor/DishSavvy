@@ -17,17 +17,17 @@
                 <div class="d-flex flex-column">
                     <div class="p-2">
                         <label class="font-weight-bold">Sodium Level</label>
-                        <output>0 mg</output>
+                        <output name="sodium">0 mg</output>
                         <input oninput="this.previousElementSibling.value = this.value+' mg'" id="sodium" type="range" min="1" max="100" value="50">
                     </div>
                     <div class="p-2">
                         <label class="font-weight-bold">Carbohydrate Level</label>
-                        <output>0 g</output>
+                        <output name="carbs">0 g</output>
                         <input oninput="this.previousElementSibling.value = this.value +' g'" id="carbs" type="range" min="1" max="100" value="50">
                     </div>
                     <div class="p-2">
                         <label class="font-weight-bold">Sugar Level</label>
-                        <output>0 g</output>
+                        <output name="sugar">0 g</output>
                         <input oninput="this.previousElementSibling.value = this.value +' g'" id="sugar" type="range" min="1" max="100" value="50">
                     </div>
                   </div>
