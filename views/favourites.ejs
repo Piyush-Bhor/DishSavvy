@@ -57,7 +57,7 @@
             <!--grid of favourite recipes here-->
             <!--use IDs in DB in the api request -->
             <div class="recipe">
-                <a href="/add/<%=recipe_id%>">
+                <a href="/delete/<%=recipe_id%>">
                     <i class="fa-solid fa-star" id="<%=recipe_id%>" onclick="toggleFavourites(recipe_id)"></i>
                 </a>
                 <img src="<%= recipe_image %>" alt="food" />
@@ -70,6 +70,14 @@
                 </div>
             </div>
         </div>
+        <!-- delete message -->
+        <%
+        if(typeof(delete_msg) != 'undefined'){
+          %>
+          <br><br><div class="alert alert-success" role="alert"> <%= delete_msg %> </div>  
+          <%
+        }
+        %>
     </main>
     <footer>
         <div class="footer-container">

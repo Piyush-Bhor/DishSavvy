@@ -157,6 +157,42 @@ app.get('/favourites', async (req,res) => {
     res.render('favourites', pageData);
 });
 
+// delete favourite 
+app.get('/delete/:id',(req,res) => {
+    if(req.session.loggedIn) {
+        var username = req.session.username;
+        var recipe_id = req.params.id;
+    
+        User.findOne({username: username}).then((user) => {
+            if(user){ 
+                for (i=0; i<user.favorites.length; i++) {
+                    if (user.favorites[i] == recipe_id) {
+                        user.favorites.splice(i,1);
+                        user.save();
+                        console.log(user.favorites);
+                        break;
+                    }
+                }
+                var pageData = {
+                    delete_msg : "Deleted Successfully",
+                    userInfo : user.username,
+                    // dummy data 
+                    recipe_id : 36748,
+                    recipe_title : "Ramen Noodle Coleslaw",
+                    recipe_image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
+                    recipe_id : 12345
+                }
+                res.render('favourites', pageData);
+            }
+        }).catch((err) => {
+            res.send(err);
+        });
+    }
+    else {
+        res.redirect('/login');
+    }
+});
+
 // search page
 app.get('/search', (req,res) => {
     const recipeAPI = require('./api/recipe_random');
