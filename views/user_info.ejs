@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Account</title>
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <link rel="stylesheet" type="text/css" href="/css/account.css">
     <script src="/js/main.js"></script>
@@ -15,7 +15,7 @@
     <header>
         <%if(userInfo){%>
         <div class="header-loggedin">
-            <img id="logo" src="/img/placeholder.png">
+            <img id="logo" src="/img/logo2.png">
             <nav class="sitelinks">
                 <a href="/">Home</a>
                 <a href="/search">Search</a>
@@ -50,21 +50,30 @@
     <main>
         <h2>Edit your Information</h2>
         <%if(userInfo){%>
-        <form action="/update/<%= userInfo.id %>">
-            <div>
+        <form class="edit-info" action="/update/<%= userInfo.id %>">
+            <div class="info-element">
                 <label for="name">Username:</label>  
                 <input type="email" name="username" value="<%= userInfo.username %>">
             </div>
-            <div>
+            <div class="info-element">
                 <label for="message">Password:</label>
                 <input type="password" name="password" id="password" value="<%= userInfo.password %>">
             </div>
             <div>
                 <input type="checkbox" onclick="togglePassword()">Show Password 
             </div>
-            <button type="submit">Submit</button>
+            <div class="info-element info-buttons">
+                
+                <a href="/account"><button type="button">Cancel</button></a>
+            
+                <button type="submit">Save Changes</button>
+            
+                <a href="/delete_account/<%= userInfo.id %>"><button type="button" class="delete">Delete Account</button></a>
+            
+            </div>
+            
         </form>
-        <a href="/delete_account/<%= userInfo.id %>"><button class="delete">Delete Account</button></a>
+        
         <%}else{%>
             <p class="expired">Your session expired. Please log in again.</p>
         <%}%>
@@ -87,7 +96,7 @@
             </section>
             <section>
                 <p class="font-weight-bold">Socials</p>
-                <img src="img/github.png">
+                <a href="https://github.com/Piyush-Bhor/CC_SenecaHackathon"><img src="img/github.png"></a>
             </section>
         </div>
         <p id="copyright">&copy;  2023</p>

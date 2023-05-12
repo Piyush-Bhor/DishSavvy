@@ -53,10 +53,11 @@ h2{
 form{
     display:flex;
     flex-direction: column;
-    row-gap: 10px;
-    width:50%;
+    row-gap: 25px;
+    width:40%;
     margin:auto;
     margin-bottom:50px;
+    margin-top:40px;
 }
 
 label{
@@ -70,6 +71,24 @@ input[type=checkbox]{
     margin-right:10px;
 }
 
+main{
+    margin-top:50px;
+}
+
+main h2{
+    color:#BC4749;
+    font-weight: 700;
+}
+
+button[type=submit]{
+    background-color: #6A994E;
+    color:white
+}
+
+button[type=submit]:hover{
+    background-color: #405e2f;
+}
+
 .expired{
     color:red;
     text-align: center;
@@ -79,6 +98,7 @@ input[type=checkbox]{
     background-color: #BC4749;
     color:white;
     transition: 0.3s;
+    float:right;
 }
 
 .delete:hover{
@@ -106,11 +126,38 @@ input[type=checkbox]{
     margin:auto;
 }
 
-@media screen and (max-width:800px){
+@media screen and (max-width:1000px){
     .account-container{
         display:block;
     }
     .account-container section{
         margin-top:30px;
+    }
+
+    .info-element{
+        display:flex;
+        flex-direction: column;
+        gap:5px;
+    }
+
+    .info-buttons{
+        margin:auto;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+    label{
+        width:100%;
+    }
+    input[type=email], input[type=password], input[type=text]{
+        width:105%;
+    }
+
+    button{
+        width:150px;
+    }
+
+    .delete{
+        float:none;
     }
 }
