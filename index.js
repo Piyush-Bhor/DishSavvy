@@ -42,10 +42,13 @@ app.get('/',(req, res) => {
     const recipeAPI = require('./api/recipe_random');
     const async_random = async () => {
         const response = await recipeAPI.get_random_recipe(4,['vegetarian','dessert']);
+        
         var pageData = {
             recipes : response.data.recipes,
+            userInfo: req.session.username
         }
         res.render('home',pageData);
+        
     }
     async_random();
 });
@@ -60,7 +63,7 @@ app.get('/search_result',(req,res) => {
     const async_random = async () => {
         const response = await recipeAPI.search_recipe(recipe_name,3,sodium,carbs,sugar);
         var pageData = {
-            recipes : response.data.results,
+            recipes : response.data.results
         }
         res.render('search',pageData);
     }
@@ -140,16 +143,14 @@ app.get('/update/:id', (req,res) => {
 
 //account page
 app.get('/account', async (req,res) => {
-    let username = req.session.username;
-    const userInfo = username
+    const userInfo = req.session.username;
     res.render('account', {userInfo});
 });
 
 // favourites page
 app.get('/favourites', async (req,res) => {
-    let username = req.session.username;
     var pageData = {
-        userInfo : username,
+        userInfo : req.session.username,
         recipe_title : "Ramen Noodle Coleslaw",
         recipe_image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
         recipe_id : 12345
@@ -200,6 +201,7 @@ app.get('/search', (req,res) => {
         const response = await recipeAPI.get_random_recipe(3,['dessert']);
         var pageData = {
             recipes : response.data.recipes,
+            userInfo: req.session.username
         }
         res.render('search',pageData);
     }

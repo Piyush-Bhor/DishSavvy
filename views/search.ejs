@@ -1,6 +1,29 @@
 <%- include('includes/header') %>
 <link rel="stylesheet" type="text/css" href="/css/search.css">
-<%- include('includes/nav') %>
+<%if(userInfo){%>
+    <header>
+    <div class="header-loggedin">
+        <img id="logo" src="/img/logo2.png">
+        <nav class="sitelinks">
+            <a href="/">Home</a>
+            <a href="/search">Search</a>
+        </nav>
+        <nav class="signin">
+            <ul>
+                <li>
+                    <a href="/account">Hello, <%= userInfo %></a>
+                <ul>
+                    <li><a href="/account">My Account</li></a>
+                    <li><a href="/favourites">Favourites</li></a>
+                    <li><a href="/logout">Logout</li></a>
+                </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+<%}else{%>
+    <%- include('includes/nav')%>
+<%}%>
 <main>
     <section class="searchBar">
         <h1>Search Recipes</h1>
