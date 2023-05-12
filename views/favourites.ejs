@@ -57,12 +57,12 @@
             <!--grid of favourite recipes here-->
             <!--use IDs in DB in the api request -->
             <div class="recipe">
-                <a href="/delete/<%=recipe_id%>">
-                    <i class="fa-solid fa-star" id="<%=recipe_id%>" onclick="toggleFavourites(recipe_id)"></i>
+                <a href="/delete/<%=recipe[0].id%>">
+                    <i class="fa-solid fa-star" id="recipe_id" onclick="toggleFavourites(recipe_id)"></i>
                 </a>
-                <img src="<%= recipe_image %>" alt="food" />
+                <img src="<%= recipe[0].image %>" alt="food" />
                 <div class="recipe-info">
-                    <h4><%= recipe_title %></h4>
+                    <h4><%= recipe[0].title %></h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
                         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
                         veniam

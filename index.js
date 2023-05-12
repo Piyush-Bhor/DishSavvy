@@ -25,7 +25,7 @@ con.on('open', ()=> {
 const User = mongoose.model('User',{
     username : String,
     password : String,
-    favorites: [Number]
+    favourites: [Number]
 });
 
 // session
@@ -84,30 +84,6 @@ app.get('/detail/:id',(req, res) => {
     async_detail();
 });
 
-// add to favorite 
-app.get('/add/:id',(req,res) => {
-    if(req.session.loggedIn) {
-        var username = req.session.username;
-        /*var recipe_id = req.query.recipe_id;*/
-        var recipe_id = req.params.id;
-
-        User.findOne({username: username}).then((user) => {
-            if(user){ 
-                user.favorites.push(recipe_id);
-                user.save();
-                /*res.send("Added!");*/ // only for testing
-                console.log("added");
-                res.redirect('back');
-            }
-        }).catch((err) => {
-            res.send(err);
-        });
-    }
-    else {
-        res.redirect('/login');
-    }
-});
-
 //user info page
 app.get('/user-info', async (req,res) => {
     let username = req.session.username;
@@ -147,18 +123,65 @@ app.get('/account', async (req,res) => {
     res.render('account', {userInfo});
 });
 
-// favourites page
-app.get('/favourites', async (req,res) => {
-    var pageData = {
-        userInfo : req.session.username,
-        recipe_title : "Ramen Noodle Coleslaw",
-        recipe_image : "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg",
-        recipe_id : 12345
+// get favourites recipes
+app.get('/favourites',(req,res) => {
+    if(req.session.loggedIn) {
+        let username = req.session.username;
+        User.findOne({username: username}).then((user) => {
+            if(user){ 
+                const favorite_recipe_ids = user.favourites;
+                const favorite_recipes = [];    
+
+                const recipeAPI = require('./api/recipe_detail');
+                const async_detail = async () => {
+                    for(i = 0; i < favorite_recipe_ids.length; i++) {
+                        const response = await recipeAPI.get_detail(favorite_recipe_ids[i]);
+                        favorite_recipes.push(response.data);
+                    }
+                    console.log(favorite_recipes[0].id);
+                    var pageData = {
+                        userInfo : req.session.username,
+                        recipe : favorite_recipes,
+                    }
+                    res.render('favourites', pageData);
+                    //console.log(pageData);
+                }
+                async_detail();
+            }
+        }).catch((err) => {
+            res.send(err);
+        });
     }
-    res.render('favourites', pageData);
+    else {
+        res.redirect('/login');
+    }
 });
 
-// delete favourite 
+// add to favorite 
+app.get('/add/:id',(req,res) => {
+    if(req.session.loggedIn) {
+        var username = req.session.username;
+        /*var recipe_id = req.query.recipe_id;*/
+        var recipe_id = req.params.id;
+
+        User.findOne({username: username}).then((user) => {
+            if(user){ 
+                user.favourites.push(recipe_id);
+                user.save();
+                /*res.send("Added!");*/ // only for testing
+                console.log("added");
+                res.redirect('back');
+            }
+        }).catch((err) => {
+            res.send(err);
+        });
+    }
+    else {
+        res.redirect('/login');
+    }
+});
+
+// delete favourites 
 app.get('/delete/:id',(req,res) => {
     if(req.session.loggedIn) {
         var username = req.session.username;
@@ -166,11 +189,11 @@ app.get('/delete/:id',(req,res) => {
     
         User.findOne({username: username}).then((user) => {
             if(user){ 
-                for (i=0; i<user.favorites.length; i++) {
-                    if (user.favorites[i] == recipe_id) {
-                        user.favorites.splice(i,1);
+                for (i=0; i<user.favourites.length; i++) {
+                    if (user.favourites[i] == recipe_id) {
+                        user.favourites.splice(i,1);
                         user.save();
-                        console.log(user.favorites);
+                        console.log(user.favourites);
                         break;
                     }
                 }
@@ -265,7 +288,7 @@ app.get('/signup_process', (req,res) => {
             var userData = {
                 username: username,
                 password: password,
-                favorites : []
+                favourites : []
             }
             var newUser = new User(userData);
             newUser.save();
