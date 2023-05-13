@@ -138,13 +138,11 @@ app.get('/favourites',(req,res) => {
                         const response = await recipeAPI.get_detail(favorite_recipe_ids[i]);
                         favorite_recipes.push(response.data);
                     }
-                    console.log(favorite_recipes[0].id);
                     var pageData = {
                         userInfo : req.session.username,
                         recipe : favorite_recipes,
                     }
                     res.render('favourites', pageData);
-                    //console.log(pageData);
                 }
                 async_detail();
             }
@@ -160,16 +158,14 @@ app.get('/favourites',(req,res) => {
 // add to favorite 
 app.get('/add/:id',(req,res) => {
     if(req.session.loggedIn) {
-        var username = req.session.username;
-        /*var recipe_id = req.query.recipe_id;*/
-        var recipe_id = req.params.id;
+        let username = req.session.username;
+        let recipe_id = req.params.id;
 
         User.findOne({username: username}).then((user) => {
             if(user){ 
                 user.favourites.push(recipe_id);
                 user.save();
-                /*res.send("Added!");*/ // only for testing
-                console.log("added");
+                console.log("added"); // remove later
                 res.redirect('back');
             }
         }).catch((err) => {

@@ -53,23 +53,31 @@
             <h1>Favourites</h1>
             <p>Your best recipes</p>
         </section>
-        <div class="favourites">
-            <!--grid of favourite recipes here-->
-            <!--use IDs in DB in the api request -->
-            <div class="recipe">
-                <a href="/delete/<%=recipe[0].id%>">
-                    <i class="fa-solid fa-star" id="recipe_id" onclick="toggleFavourites(recipe_id)"></i>
-                </a>
-                <img src="<%= recipe[0].image %>" alt="food" />
-                <div class="recipe-info">
-                    <h4><%= recipe[0].title %></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-                        veniam
-                    </p>
-                </div>
+        <!--grid of favourite recipes here-->
+        <!--use IDs in DB in the api request -->
+            <div class="row pt-5"> 
+                <% for(var i = 0; i < recipe.length; i++) { %>
+                  <div class="col mx-3">
+                    <div class="recipe">
+                        <a href="/delete/<%=recipe[i].id%>">
+                            <i class="fa-solid fa-star" id="recipe_id" onclick="toggleFavourites(recipe_id)"></i>
+                        </a>
+                        <img src="<%= recipe[i].image %>" alt="food" />
+                        <div class="recipe-info">
+                            <h4><%= recipe[i].title %></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+                                veniam
+                            </p>
+                        </div>
+                    </div>
+                  </div>
+                <% if((i + 1) % 3 === 0) { %>
             </div>
-        </div>
+            <div class="row">
+                <% } %>
+            <% } %>
+            </div>
         <!-- delete message -->
         <%
         if(typeof(delete_msg) != 'undefined'){
